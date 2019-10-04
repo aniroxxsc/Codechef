@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+int t,n;
+cin>>t;
+for(int q=0;q<t;q++){
+	int x1,y1,x2,y2;
+	cin>>x1;
+	cin>>y1;
+	cin>>x2;
+	cin>>y2;
+	if(x1==x2){
+		if(y1>y2){
+			cout<<"down"<<endl;
+		}
+		if(y1<y2){
+			cout<<"up"<<endl;
+		}
+	}
+	if(y1==y2){
+		if(x1>x2){
+			cout<<"left"<<endl;
+		}
+		if(x1<x2){
+			cout<<"right"<<endl;
+		}
+	}
+	else if(x1!=x2 && y1!=y2){
+		cout<<"sad"<<endl;
+	}
+}
+
+return 0;
+}
