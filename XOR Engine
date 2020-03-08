@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        long long int n,q;
+        cin>>n>>q;
+        long long int arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        while(q--){
+            long long int p;
+            cin>>p;
+            long long int b[n],temp=0,rem;
+            long long int odd=0,even=0;
+            for(int i=0;i<n;i++){
+                b[i] = p^arr[i];
+                while(b[i]!=0){
+                    rem = b[i]%2;
+                    b[i] = b[i]/2;
+                    if(rem==1){
+                        temp++;
+                    }
+                }
+                if(temp%2==0){
+                    even++;
+                }
+                else if(temp%2==1){
+                    odd++;
+                }
+                temp=0;
+            }
+            cout<<even<<" "<<odd<<endl;
+        }
+    }
+    return 0;
+}
