@@ -1,0 +1,114 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,k,x,y;
+        cin>>n>>k>>x>>y;
+        int m,diff;
+        int arr_x[4],arr_y[4];
+        bool dir_x=true,dir_y=true,done=false;
+        for(int i=0;i<4;i++){
+            if(i==0){
+                if(x==y){
+                    cout<<n<<" "<<n<<endl;
+                    done=true;
+                    break;
+                }
+                else if((x==0 && y==n) || (x==n && y==0)){
+                    cout<<x<<" "<<y<<endl;
+                    done=true;
+                    break;
+                }
+                else if(x!=y){
+                    m = max(x,y);
+                    diff = n-m;
+                    x +=diff;
+                    y+=diff;
+                    if(x==n){
+                        dir_x=false;
+                    }
+                    else{
+                        dir_y=false;
+                    }
+                }
+            }
+            else if(x==n){
+                if(dir_y==true){
+                    diff = n-y;
+                }
+                if(dir_y==false){
+                    diff = y;
+                }
+                x-=diff;
+                dir_x =false;
+                if(dir_y==true){
+                    y = n;
+                }
+                else if(dir_y==false){
+                    y=0;
+                }
+            }
+            else if(x==0){
+                if(dir_y==true){
+                    diff = n-y;
+                }
+                if(dir_y==false){
+                    diff = y;
+                }
+                x+=diff;
+                dir_x =true;
+                if(dir_y==true){
+                    y = n;
+                }
+                else if(dir_y==false){
+                    y=0;
+                }
+            }
+            else if(y==n){
+                if(dir_x==true){
+                    diff = n-x;
+                }
+                if(dir_x==false){
+                    diff = x;
+                }
+                y-=diff;
+                dir_y =false;
+                if(dir_x==true){
+                    x = n;
+                }
+                else if(dir_x==false){
+                    x=0;
+                }
+            }
+            else if(y==0){
+                if(dir_x==true){
+                    diff = n-x;
+                }
+                if(dir_x==false){
+                    diff=x;
+                }
+                y+=diff;
+                dir_y =true;
+                if(dir_x==true){
+                    x = n;
+                }
+                else if(dir_x==false){
+                    x=0;
+                }
+            }
+            arr_x[i]=x;
+            arr_y[i]=y;
+        }
+        //for(int i=0;i<4;i++){
+        //    cout<<arr_x[i]<<" "<<arr_y[i]<<endl;
+        //}
+        if(done ==false){
+            k = (k-1)%4;
+            cout<<arr_x[k]<<" "<<arr_y[k]<<endl;
+        }
+    }
+    return 0;
+}
